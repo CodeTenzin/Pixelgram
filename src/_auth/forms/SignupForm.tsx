@@ -13,9 +13,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { SignupValidation } from "@/lib/validation";
 import { z } from "zod";
+import Loader from "@/components/shared/Loader";
 
 const SignupForm = () => {
-  const isLoading = true;
+  const isLoading = false;
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignupValidation>>({
@@ -43,7 +44,7 @@ const SignupForm = () => {
           Create a new account
         </h2>
         <p className="text-light-3 small-medium md:base-regular mt-2">
-          To use Pixelgram enter your details
+          To use Pixelgram, please enter your details
         </p>
 
         <form
@@ -104,7 +105,9 @@ const SignupForm = () => {
           />
           <Button type="submit" className="shad-button_primary">
             {isLoading ? (
-              <div className="flex-center gap-2">Loading...</div>
+              <div className="flex-center gap-2">
+                <Loader /> Loading...
+              </div>
             ) : (
               "Sign up"
             )}
